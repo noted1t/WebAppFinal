@@ -1,0 +1,71 @@
+[versions]
+
+kotlin = "2.0.0-RC2"
+compose = "1.6.10-rc01"
+napier = "2.7.1"
+kotlinx-coroutines = "1.8.1"
+ktor = "2.3.11"
+materialKolor = "1.4.0-rc03"
+kotlinx-serialization = "1.6.3"
+kotlinx-datetime = "0.5.0"
+koin = "3.5.3"
+mpsettings = "1.1.1"
+
+#server-only
+exposed = "0.50.1"
+h2db = "2.2.222"
+logback_version="1.4.14"
+
+[libraries]
+
+ktor-core = { group = "io.ktor", name = "ktor-client-core", version.ref = "ktor" }
+ktor-content-negotation = { group = "io.ktor", name = "ktor-client-content-negotiation", version.ref = "ktor" }
+ktor-serialization-json = { group = "io.ktor", name = "ktor-serialization-kotlinx-json", version.ref = "ktor" }
+ktor-client-js = { group = "io.ktor", name = "ktor-client-js", version.ref = "ktor" }
+
+materialKolor = { group = "com.materialkolor", name = "material-kolor", version.ref = "materialKolor" }
+
+multiplatform-settings = { group = "com.russhwolf", name = "multiplatform-settings", version.ref = "mpsettings" }
+multiplatform-settings-noargs = { group = "com.russhwolf", name = "multiplatform-settings-no-arg", version.ref = "mpsettings" }
+
+napier = { module = "io.github.aakira:napier", version.ref = "napier" }
+
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
+kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinx-coroutines" }
+
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
+kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinx-datetime" }
+koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
+
+# ktor-server
+
+ktor-server-core-jvm = { group = "io.ktor", name = "ktor-server-core-jvm", version.ref = "ktor" }
+ktor-server-cors-jvm = { group = "io.ktor", name = "ktor-server-cors-jvm", version.ref = "ktor" }
+ktor-server-sessions-jvm = { group = "io.ktor", name = "ktor-server-sessions", version.ref = "ktor" }
+ktor-server-content-negotiation-jvm = { group = "io.ktor", name = "ktor-server-content-negotiation-jvm", version.ref = "ktor" }
+ktor-server-netty-jvm = { group = "io.ktor", name = "ktor-server-netty-jvm", version.ref = "ktor" }
+ktor-serialization-kotlinx-json-jvm = { group = "io.ktor", name = "ktor-serialization-kotlinx-json-jvm", version.ref = "ktor" }
+
+server-logger-jvm = { group = "ch.qos.logback", name = "logback-classic", version.ref = "logback_version" }
+
+kotlin-server-exposed-core = { group = "org.jetbrains.exposed", name = "exposed-core", version.ref = "exposed" }
+kotlin-server-exposed-jdbc = { group = "org.jetbrains.exposed", name = "exposed-jdbc", version.ref = "exposed" }
+
+h2db = { group = "com.h2database", name = "h2", version.ref = "h2db" }
+
+
+[bundles]
+
+multiplatform-settings = ["multiplatform-settings", "multiplatform-settings-noargs"]
+ktor-client = ["ktor-core", "ktor-content-negotation", "ktor-serialization-json"]
+ktor-server = ["ktor-server-core-jvm", "ktor-server-cors-jvm", "server-logger-jvm", "ktor-server-sessions-jvm", "ktor-server-content-negotiation-jvm", "ktor-serialization-kotlinx-json-jvm", "ktor-server-netty-jvm"]
+exposed-server = ["kotlin-server-exposed-core", "kotlin-server-exposed-jdbc"]
+
+[plugins]
+
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+ktor-server = { id = "io.ktor.plugin", version.ref = "ktor" }
+multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+compose = { id = "org.jetbrains.compose", version.ref = "compose" }
+kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
